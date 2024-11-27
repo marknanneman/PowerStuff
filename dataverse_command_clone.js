@@ -1,6 +1,6 @@
 var MarksDevCommandButtons = {
 
-    cloneRecordsClick: function (selCount, selIds, selRefs, typeName) {
+    cloneRecordsClick: function (selRefs) {
         duplicateRecords(selRefs);
     },
 
@@ -58,6 +58,7 @@ async function duplicateRecords(selRecs) {
 
     const tableName = selRecs[0].TypeName; // Logical name of the table
     const metadata = await Xrm.Utility.getEntityMetadata(tableName);  //get metadata for table
+    console.log("Metadata", metadata);
     const tablePrimaryNameColumn = metadata.PrimaryNameAttribute; // get the name of the primary name column for the record
     const createPromises = []; //promises array to make sure the final refresh of the list waits until all records are copied
 
